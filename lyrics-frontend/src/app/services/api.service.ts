@@ -16,7 +16,8 @@ export class APIService {
 
   constructor(private http: HttpClient) { }
 
-  url = `${environment.url}`
+  url = `${environment.url}`;
+  urlTranslate = `${environment.APITranslate}`
 
   /**
    * Method to call the API
@@ -25,5 +26,15 @@ export class APIService {
    */
   getAPIiNFO(song:Song): Observable<any> {
     return this.http.get(this.url+song.artist+"/"+song.title);
+  }
+
+
+  /**
+   * Method to call the API translator
+   * @param song 
+   * @returns Song translated
+   */
+  translateLyrics(song:Song): Observable<any> {
+    return this.http.post<Song>(this.urlTranslate,song);
   }
 }

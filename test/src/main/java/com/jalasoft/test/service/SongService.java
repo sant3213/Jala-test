@@ -12,6 +12,11 @@ public class SongService {
     @Autowired
     private APIRepository apiRepository;
 
+    /**
+     *
+     * @param translatorRequest
+     * @return the translated song
+     */
     public TranslatedSong getSongTranslated(TranslatorRequest translatorRequest){
         TranslatedSong translatedSong = apiRepository.translateSong(translatorRequest);
         return translatedSong;

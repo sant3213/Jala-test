@@ -75,4 +75,15 @@ export class MainComponent implements OnInit {
     this.isAlert = false;
   }
 
+
+  getLyricsTranslated() {
+    this.service.getAPIiNFO(this.songInformation).subscribe((data) => {
+      this.lyrics = data.lyrics;
+      if(this.lyrics.length==0){
+        this.isAlert = true;
+      }
+      console.log(this.lyrics);
+    })
+  }
+
 }

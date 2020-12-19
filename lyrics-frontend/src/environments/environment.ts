@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  url:"https://api.lyrics.ovh/v1/"
+  url:"https://api.lyrics.ovh/v1/",
+  APITranslate:"http://localhost:8080/translate"
 };
 
 /*

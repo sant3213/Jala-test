@@ -17,13 +17,18 @@ public class APIRepository {
     @Autowired
     private RestTemplate restTemplate;
 
+    /**
+     *
+     * @param translatorRequest
+     * @return The translated song
+     */
     public TranslatedSong translateSong(TranslatorRequest translatorRequest){
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.set("Authorization", "Bearer "+"a_ItVQVpy8n2JpN7SO382k7W0vMPV3O27WE9QQ0PXkAAAPDX9HEHRS5VJmcPuOPGzZoH2U0PglLUVbv2W0");
-        HttpEntity<TranslatorRequest> request =
-                new HttpEntity<TranslatorRequest>(translatorRequest, headers);
-            TranslatedSong translatedSong = restTemplate.postForObject(URL, request, TranslatedSong.class);
+        HttpEntity<String> request =
+                new HttpEntity(translatorRequest, headers);
+        TranslatedSong translatedSong = restTemplate.postForObject(this.URL, request, TranslatedSong.class);
         return translatedSong;
     }
 }
