@@ -1,0 +1,32 @@
+<div class="title">{{title}}</div>
+
+<div class="form-lyrics">
+    <form (ngSubmit)="setValues()" [formGroup]="songForm">
+        <div class="form-group">
+            <label for="exampleFormControlInput1" class="label">Artist</label>
+            <input type="email" class="form-control" formControlName="artist" id="exampleFormControlInput1" placeholder="Queen">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1" class="label">Title</label>
+            <input type="email" class="form-control"  formControlName="title" id="exampleFormControlInput1" placeholder="Bohemian Rhapsodi">
+        </div>
+      
+        <button type="submit" class="btn btn-primary" [disabled]="!songForm.valid" >Find lyrics</button>
+       
+    <!--    <button type="submit" class="btn btn-primary" *ngIf="clear" (click)="clearValues()">Clear values</button>-->
+    </form>
+    <div class="form-group" *ngIf="lyrics">
+        <label for="exampleFormControlTextarea1"></label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="10">{{lyrics}}</textarea>
+    </div>
+</div>
+
+
+<div class="alert-style">
+  <div class="alert alert-danger alert-dismissible fade show"  *ngIf="isAlert">
+    <button type="button" class="close" data-dismiss="alert" (click)="isAlertOn()">&times;</button>
+    <strong>Not found!</strong>
+  </div>
+</div>
+
+  
